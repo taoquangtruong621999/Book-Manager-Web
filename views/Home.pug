@@ -1,0 +1,65 @@
+extends layouts/layout-home
+block content
+  .banner
+    .container.form
+      .mario-chat
+        .chat-window
+            #output.output
+                each message in messages
+                    p
+                      strong=message.name
+                        strong :
+                      =message.message
+            #feedback
+        if users
+          input#name(type='text', placeholder='Name',value=users.email,disabled)
+        input#message(type='text', placeholder='Message')
+        button#send Send
+    
+  div.content
+    .container
+      //- h2(style='text-align:center;font-size: 35px;') Search Book
+      //- form.form-search(action="/books/search" method="GET")
+      //-   div(style='margin-bottom: 10px') 
+      //-     label(for="title") Title 
+      //-     input.form-control(placeholder="Title Book",type="text" name="title" value=searchOptions.title)
+      //-   div.form-row
+      //-     div.form-item
+      //-       label(for="published-after") Published After 
+      //-       input.form-control.form-( type="date" name="publishedAfter" value=searchOptions.publishedAfter)
+      //-     div.form-item
+      //-       label(for="published-before") Published Before 
+      //-       input.form-control(type="date" name="publishedBefore" value=searchOptions.publishedBefore)
+      //-   div._btn
+      //-     button.btn.btn-primary(type="submit") Search
+      //- div.books
+      //-   .khungsanpham
+      //-     each book in books
+      //-       .col-md-3.col-sm-3.col-lg-3.col-xs-6.canchinhkhung
+      //-         a(href='/books/'+book.id style='text-decoration:none')
+      //-             img( class='img',src=book.coverImgpath)
+      //-             .khungtentieude
+      //-               h2(style='color:#333' class="tieudesach")=book.title
+      //-             button(type="submit" class="nutxemthongtin") View
+      h2(style='text-align:center;font-size: 35px;') 
+      form.form-search(action="/" method="GET")
+        div(style='margin-bottom: 10px') 
+          label(for="title") Search 
+          input.form-control(placeholder="Title Book",type="text" name="title" value=searchOptions.title)
+        //- div.form-row
+        //-   div.form-item
+        //-     label(for="published-after") Published After 
+        //-     input.form-control.form-( type="date" name="publishedAfter" value=searchOptions.publishedAfter)
+        //-   div.form-item
+        //-     label(for="published-before") Published Before 
+        //-     input.form-control(type="date" name="publishedBefore" value=searchOptions.publishedBefore)
+        div._btn(style="margin-bottom:10px;float:right;margin-top:-44px;")
+          button.btn.btn-primary(type="submit") Search
+      div.books
+        .khungsanpham
+          each book in books
+            .col-md-3.col-sm-3.col-lg-3.col-xs-6.canchinhkhung
+              a(href='/books/'+book.id style='text-decoration:none')
+                  img( class='img',src=book.coverImgpath)
+                  .khungtentieude
+                    h2(style='color:#333' class="tieudesach")=book.title

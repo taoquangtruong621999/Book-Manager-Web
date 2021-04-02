@@ -1,0 +1,21 @@
+extends ../layouts/layouts
+block content
+  .banner
+   .container.form
+    h1 SIGN UP
+    if hasErrors
+        each mess in messages
+            .alert.alert-danger
+                span.err= mess
+    .row.p-3
+    .col-4.border.border-primary.rounded.mt-2.p-3
+        form(action="/users/signup",method='POST')
+            .form-group
+                label(for='email') Email
+                input#email.form-control(type='email', value=values ? values.email : "", name='email',style:{width:400px})
+            .form-group
+                label(for='password') Password
+                input#password.form-control(type='password', name='password',value=values ? values.password : "")
+            button.btn.btn-primary(type='submit') Submit
+            input(type='hidden', name='_csrf', value=csrfToken) 
+        

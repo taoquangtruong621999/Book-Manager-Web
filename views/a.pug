@@ -1,0 +1,22 @@
+extends layouts/layout-home
+
+block content
+ div.container
+  include partials/errMess
+  .col-md-4.col-sm-4.col-lg-4
+  .col-md-5.col-sm-5.col-lg-5 
+   .col-md-6.col-sm-6.col-lg-6.col-xs-6.margin-top_(style='padding: 0;')
+    img(class='img-book' src=book.coverImgpath)
+   .col-md-6.col-sm-6.col-lg-6.col-xs-6(style='padding: 0;')
+    h2= book.title
+    div.show-books Author: 
+       =book.author.name
+    div.show-books Publish Date: 
+       =book.publishDate.toDateString()
+    div.show-books Page Count: 
+       =book.pageCount
+    div.show-books Description: 
+       =book.description
+    div(style='display:flex')          
+    
+  .col-md-3.col-sm-3.col-lg-3  
